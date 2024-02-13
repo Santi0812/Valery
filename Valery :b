@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Mensaje de Amor</title> 
+ </head> 
+ <body> 
+  <h1>¡Hola, Valery💗!</h1> 
+  <p>Haz clic en cualquier lugar de la página para recibir un nuevo mensaje especial.</p> 
+  <div id="message"></div> 
+  <script>
+        // Array de mensajes de amor
+        const loveMessages = [
+            "gracias por siempre estar conmigo.",
+            "Te amo con todo mi corazón, mi niña linda.",
+            "Recuerda que eres mi chica ideal.",
+            "💗"
+        ];
+
+        // Variable para almacenar el mensaje anterior
+        let previousMessage = '';
+
+        // Obtener el elemento de mensaje
+        const messageDiv = document.getElementById('message');
+
+        // Función para obtener un mensaje aleatorio que no sea el mismo que el anterior
+        function getRandomMessage() {
+            let randomIndex;
+            let randomMessage;
+            do {
+                randomIndex = Math.floor(Math.random() * loveMessages.length);
+                randomMessage = loveMessages[randomIndex];
+            } while (randomMessage === previousMessage); // Repetir hasta obtener un mensaje diferente
+            previousMessage = randomMessage;
+            return randomMessage;
+        }
+
+        // Función para cambiar el mensaje cuando se toca la pantalla
+        function changeMessage() {
+            const randomMessage = getRandomMessage();
+            messageDiv.textContent = randomMessage;
+        }
+
+        // Agregar un evento para cambiar el mensaje cuando se toca la pantalla
+        document.body.addEventListener('click', changeMessage);
+    </script> 
+ </body>
+</html>
